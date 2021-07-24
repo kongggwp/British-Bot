@@ -83,7 +83,7 @@ async function execute(message, serverQueue) {
       voiceChannel: voiceChannel,
       connection: null,
       songs: [],
-      volume: 5,
+      volume: 4,
       playing: true
     };
 
@@ -146,6 +146,7 @@ function play(guild, song) {
     .on("error", error => console.error(error));
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
   serverQueue.textChannel.send(`Start playing: **${song.title}**`);
+  console.log(`${song.title}`);
 }
 
 client.on('message',msg=>{
@@ -185,7 +186,7 @@ client.on('message', message => {
   if (!message.guild) return;
 
   // if the message content starts with "!ban"
-  if (message.content.startsWith('!ban')) {
+  if (message.content.startsWith('=ban')) {
     // Assuming we mention someone in the message, this will return the user
     // Read more about mentions over at https://discord.js.org/#/docs/main/master/class/MessageMentions
     const user = message.mentions.users.first();
